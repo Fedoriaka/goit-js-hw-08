@@ -4,8 +4,10 @@ const formObject = {};
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
-  console.log(`Email: ${formObject.email}`);
-  console.log(`Message: ${formObject.message}`);
+  console.log({
+    email: formObject.email,
+    message: formObject.message,
+  });
 
   localStorage.removeItem('feedback-form-state');
   for (const key in formObject) {
@@ -25,7 +27,9 @@ function savingData(e) {
 
 const savedData = localStorage.getItem('feedback-form-state');
 if (savedData) {
-  SavedformObject = JSON.parse(savedData);
-  form.elements.email.value = SavedformObject.email;
-  form.elements.message.value = SavedformObject.message;
+  const SavedformObject = JSON.parse(savedData);
+  form.elements.email.value = SavedformObject.email || '';
+  form.elements.message.value = SavedformObject.message || '';
+  formObject.email = SavedformObject.email || '';
+  formObject.message = SavedformObject.message || '';
 }
