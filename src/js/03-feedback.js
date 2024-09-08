@@ -4,7 +4,7 @@ const formObject = {};
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
-   console.log({
+  console.log({
     email: formObject.email,
     message: formObject.message,
   });
@@ -30,4 +30,6 @@ if (savedData) {
   const SavedformObject = JSON.parse(savedData);
   form.elements.email.value = SavedformObject.email || '';
   form.elements.message.value = SavedformObject.message || '';
+  formObject.email = SavedformObject.email || '';
+  formObject.message = SavedformObject.message || '';
 }
