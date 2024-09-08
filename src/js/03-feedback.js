@@ -25,7 +25,7 @@ function savingData(e) {
 
 const savedData = localStorage.getItem('feedback-form-state');
 if (savedData) {
-  SavedformObject = JSON.parse(savedData);
+  const SavedformObject = JSON.parse(savedData);
   form.elements.email.value = SavedformObject.email;
   form.elements.message.value = SavedformObject.message;
 }
